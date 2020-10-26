@@ -1,18 +1,20 @@
 import React from "react";
 import { GridList } from '@material-ui/core';
 import CalenderElement from "../CalendarElement";
-import { createCalender } from "../../services/calender";
+import  {createCalendar } from "../../services/calendar";
 import * as styles from "./style.css";
 
-const calendar = createCalender();
+const calendar = createCalendar();
 
 const CalendarBoard = () => {
   return (
     <div className= {styles.container} >
       <GridList className={styles.grid} cols={7} spacing={0} cellHeight="auto">
-        {calendar.map( c => (
+        {calendar.map(c => (
           <li key={c.toISOString()}>
-            <CalenderElement>{c.format("D")}</CalenderElement>
+            <CalenderElement>
+              {c.format("D")}
+            </CalenderElement>
           </li>
         ))}
       </GridList>
