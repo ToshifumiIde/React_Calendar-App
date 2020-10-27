@@ -7,3 +7,11 @@
   padding: 5px 0;
   height: 24px;
 }
+.today {
+  background-color: #1a73e8;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  line-height: 24px;
+  width: 24px;
+}
