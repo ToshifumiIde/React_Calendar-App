@@ -5,18 +5,6 @@ import dayjs from "dayjs";
 import {isSameMonth , isSameDay , isFirstDay} from "../../services/calendar";
 
 const CalendarElement = ({ day }) =>{
-  // const isFirstDay = day.date() === 1; //文字列のフォーマットの設定
-  // const format = isFirstDay ? "M月D日" : "D" ; //月初めだけ、月情報を記載
-  
-  // //当日かどうかの判断//
-  // const today = dayjs();
-  // const compareFormat = "YYYYMMDD";
-  // const isToday = day.format(compareFormat) === today.format(compareFormat);
-
-  // //今月以外をグレーダウン//
-  // const isCurrentMonth = day.month() === today.month();
-  // const textColor = isCurrentMonth ? "textPrimary" : "textSecondary";
-
   const today = dayjs();
 
   //今月以外をグレーダウンする
