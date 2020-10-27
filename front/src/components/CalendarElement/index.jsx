@@ -1,5 +1,6 @@
 import React from "react";
 import * as styles from "./style.css";
+import dayjs from "dayjs";
 import { Typography } from "@material-ui/core";
 import dayjs from "dayjs";
 import {isSameMonth , isSameDay , isFirstDay} from "../../services/calendar";
@@ -40,7 +41,7 @@ const CalendarElement = ({ day }) =>{
         >
           <span className={isToday ? styles.today :""}>
     { day.format(format) }
-          </span>
+        </span>
       </Typography>
     </div>
   );
