@@ -1,7 +1,9 @@
 import dayjs from "dayjs";
 
-export const createCalendar = () => {
+export const createCalendar = month => {
   //今月の最初の日を追加
+  // const firstDay = dayjs().startOf("month");
+  // const firstDayIndex = firstDay.day();
   const firstDay = getMonth(month);
   const firstDayIndex = firstDay.day();
 
@@ -17,6 +19,10 @@ export const createCalendar = () => {
     return day ;
   });
 };
+
+export const getMonth = ({ year , month }) => {
+  return dayjs(`${year}-${month}`);
+}
 
 export const isSameDay = (d1,d2) =>{
   const format = "YYYYMMDD";

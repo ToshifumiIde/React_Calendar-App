@@ -1,17 +1,13 @@
 import { connect } from "react-redux";
 import CalendarBoard from "./presentation";
+import { createCalendar } from "../../services/calendar";
 
-const mapStateToProps = state => ( { calendar:state.calendar } );
+const mapStateToProps = state => ({calendar:state.calendar});
 
-export default connect(mapStateToProps)(CalendarBoard);
+const mergeProps = stateProps =>({
+  calendar:createCalendar(stateProps.calendar)
+});
 
+export default connect(mapStateToProps,null,mergeProps)(CalendarBoard);
 
-import rootReducer from "./redux/rootReducer";
-
-const store =createStore(rootReducer);
-
-const App = () => (
-  <Provider store={store}>
-  <CalendarBoard />
-  </Provider>
-);
+//3-2-5まで完了
