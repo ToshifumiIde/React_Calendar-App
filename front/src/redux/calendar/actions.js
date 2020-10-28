@@ -6,4 +6,3 @@ export const calendarSetMonth = payload =>({
   type:CALENDAR_SET_MONTH,
   payload
 });
-

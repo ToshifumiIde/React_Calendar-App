@@ -1,11 +1,20 @@
 .element {
-  border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
   height: 18vh;
 }
 .date {
-  padding: 5px 0;
   height: 24px;
+  padding: 5px 0;
+}
+
+.today {
+  background-color: #1a37e8;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  line-height: 24px;
+  width: 24px;
 }
 .today {
   background-color: #1a73e8;
