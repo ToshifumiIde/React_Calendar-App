@@ -4,6 +4,7 @@ export const createCalendar = month => {
   //今月の最初の日を追加
   const firstDay = getMonth(month);
   const firstDayIndex = firstDay.day();
+
   return Array(35)
   .fill(0)
   .map((_ ,i) => {
