@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 // import CalendarBoard from "./components/CalendarBoard";
 import CalendarBoard from "./components/CalendarBoard/container";
+import Navigation from "./components/Navigation/container";
 
 
 import dayjs from "dayjs";
@@ -18,6 +19,7 @@ const store = createStore(rootReducer);
 const App = () => {
   return(
     <Provider store={store}>
+      <Navigation />
       <CalendarBoard />
     </Provider>
   )
