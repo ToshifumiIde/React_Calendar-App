@@ -15,7 +15,7 @@ dayjs.locale("ja");
 
 const store = createStore(rootReducer);
 
-//5-2まで完了
+//5-3まで完了
 
 const App = () => {
   return(

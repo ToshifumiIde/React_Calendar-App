@@ -1,8 +1,17 @@
 import {SCHEDULES_ADD_ITEM} from "./actions";
+import dayjs from "dayjs";
 
 //初期値を設定
 const init ={
-  items:[],
+  items:[
+    // {
+    //   id:1,
+    //   title:"test",
+    //   date:dayjs(),
+    //   location:"会議室",
+    //   description:"経営戦略について",
+    // }
+  ],
   isLoading:false
 };
 
