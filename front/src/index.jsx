@@ -15,6 +15,8 @@ dayjs.locale("ja");
 
 const store = createStore(rootReducer);
 
+//4-5まで完了（ただし、DatePickerのmonthが英語表記）
+
 const App = () => {
   return(
     <Provider store={store}>
