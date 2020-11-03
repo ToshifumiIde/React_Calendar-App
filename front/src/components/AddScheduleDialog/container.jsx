@@ -1,9 +1,10 @@
-// import React from "react";
-import AddScheduleDialog from "./presentation"
+import AddScheduleDialog from "./presentation";
+
 import { connect } from "react-redux";
+
 import { addScheduleCloseDialog } from "../../redux/addSchedule/actions";
 
-//reduxでのdialogの状態管理を切り替える
+//reduxでdialogの状態管理を切り替え(scheduleだけ受け取る)
 const mapStateToProps = state =>({ schedule:state.addSchedule });
 
 //dialogを閉じるためのメソッド
@@ -13,4 +14,7 @@ const mapDispatchToProps = dispatch =>({
   }
 });
 
-export default connect(mapStateToProps , mapDispatchToProps)(AddScheduleDialog);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+  )(AddScheduleDialog);

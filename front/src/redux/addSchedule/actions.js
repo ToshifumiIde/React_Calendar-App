@@ -10,8 +10,9 @@ export const addScheduleSetValue = payload => ({
 });
 
 export const addScheduleOpenDialog = () =>({
-  type:ADD_SCHEDULE_OPEN_DIALOG
+  type:ADD_SCHEDULE_OPEN_DIALOG,
 });
+
 export const addScheduleCloseDialog = () =>({
-  type:ADD_SCHEDULE_CLOSE_DIALOG
+  type:ADD_SCHEDULE_CLOSE_DIALOG,
 });
