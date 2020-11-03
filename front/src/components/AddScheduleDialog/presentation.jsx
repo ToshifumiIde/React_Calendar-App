@@ -18,8 +18,12 @@ const Title = withStyles({
 
 
 const AddScheduleDialog = ({ 
-  schedule:{ isDialogOpen },
-  closeDialog
+  schedule:{ 
+    form:{title , location , description },
+    isDialogOpen
+  },
+  closeDialog,
+  setSchedule,
   }) => {
   return(
     <Dialog 
@@ -33,6 +37,8 @@ const AddScheduleDialog = ({
         autoFocus
         fullWidth
         placeholder="タイトルと日時を追加"
+        value={title}
+        onChange={e=>setSchedule({title:e.target.value})}
         />
       <Grid 
       container
@@ -48,6 +54,8 @@ const AddScheduleDialog = ({
           style={spacer}
           fullWidth
           placeholder="場所を追加"
+          value={location}
+          onChange={e=>setSchedule({location:e.target.value})}
           />
         </Grid>
       </Grid>
@@ -65,6 +73,8 @@ const AddScheduleDialog = ({
             style={spacer}
             fullWidth
             placeholder="説明を追加"
+            value={description}
+            onChange={e=>setSchedule({description:e.target.value})}
           />
         </Grid>
       </Grid>

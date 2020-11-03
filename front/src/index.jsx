@@ -15,6 +15,8 @@ dayjs.locale("ja");
 
 const store = createStore(rootReducer);
 
+//4-3まで完了
+
 const App = () => {
   return(
     <Provider store={store}>
