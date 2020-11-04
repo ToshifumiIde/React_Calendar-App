@@ -2,10 +2,20 @@ import React from "react";
 import * as styles from "./style.css";
 import { Typography } from "@material-ui/core";
 import dayjs from "dayjs";
-import {isSameMonth , isSameDay , isFirstDay , getMonth } from "../../services/calendar";
+import {
+  isSameMonth,
+  isSameDay,
+  isFirstDay,
+  getMonth
+} from "../../services/calendar";
 import Schedule from "../Schedule";
 
-const CalendarElement = ({ day , month , schedules }) =>{
+const CalendarElement = ({
+  day,
+  month,
+  schedules,
+  ...props
+}) =>{
   const today = dayjs();
 
   //今月以外をグレーダウンする
@@ -17,25 +27,24 @@ const CalendarElement = ({ day , month , schedules }) =>{
   const format = isFirstDay(day) ? "M月D日" : "D" ;
 
   //当日かどうかの判断
-  // const today = dayjs();
   const isToday = isSameDay(day,today);
 
   return (
     <div className={styles.element}>
       <Typography 
-        align="center"
         className={styles.date}
         color={textColor}
-        component="div"
+        align="center"
         variant="caption"
+        component="div"
         >
           <span className={isToday ? styles.today :""}>
     { day.format(format) }
           </span>
       </Typography>
-      <div className="{styles.schedules}">
+      <div className={styles.schedules}>
         {schedules.map(e =>(
-          <Schedule key={e.id} schedule={e}/>
+          <Schedule key={e.id} schedule={e} {...props}/>
         ))}
       </div>
     </div>

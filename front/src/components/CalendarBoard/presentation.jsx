@@ -9,6 +9,7 @@ const CalendarBoard = ({
   calendar,
   month,
   openAddScheduleDialog,
+  openCurrentScheduleDialog
 }) => {
   
   return (
@@ -36,6 +37,7 @@ const CalendarBoard = ({
               day={date}
               month={month}
               schedules={schedules}
+              onClickSchedule={openCurrentScheduleDialog}
             />
           </li>
         ))}
