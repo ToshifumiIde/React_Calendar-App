@@ -3,10 +3,10 @@ import * as styles from "./style.css";
 import { Typography } from "@material-ui/core";
 import dayjs from "dayjs";
 import {
-  isSameMonth,
   isSameDay,
+  getMonth,
+  isSameMonth,
   isFirstDay,
-  getMonth
 } from "../../services/calendar";
 import Schedule from "../Schedule";
 

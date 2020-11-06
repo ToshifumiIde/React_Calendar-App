@@ -5,7 +5,7 @@ const Schedule = ( {schedule , onClickSchedule} ) =>{
   return (
     <div 
       className={styles.schedule}
-      onClick={e =>{onClickSchedule(schedule,e)}}
+      onClick={e => onClickSchedule(schedule,e) }
     >
       {schedule.title}
     </div>

@@ -4,12 +4,12 @@ import {
   CURRENT_SCHEDULE_CLOSE_DIALOG,
 } from "./actions"
 
-const init ={
+const init = {
   item:null,
   isDialogOpen:false,
 };
 
-const currentScheduleReducer =(state= init , action )=>{
+const currentScheduleReducer =( state = init , action )=> {
   const {type, payload } = action;
 
   switch(type){

@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{ useEffect } from "react";
 import { GridList ,Typography } from '@material-ui/core';
 import CalendarElement from "../CalendarElement";
 import * as styles from "./style.css";
@@ -9,9 +9,14 @@ const CalendarBoard = ({
   calendar,
   month,
   openAddScheduleDialog,
-  openCurrentScheduleDialog
+  openCurrentScheduleDialog,
+  fetchSchedule,
 }) => {
-  
+  //useEffectはretuctの状態が更新されるたびに呼び出されるAPI
+  useEffect(() => {
+    //「初回のみ」dateを取得する場合、第二引数の配列を空にする
+    fetchSchedule();
+  },[]);
   return (
     <div className= {styles.container} >
       <GridList className={styles.grid} cols={7} spacing={0} cellHeight="auto">
