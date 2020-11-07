@@ -23,13 +23,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(addScheduleOpenDialog(true));
     dispatch(addScheduleSetValue({date:d}));
   },
-  
-  openCurrentScheduleDialog:(schedule,e) => {
+  openCurrentScheduleDialog:(schedule, e ) => {
     //他のイベントの発火するのをキャンセル
     e.stopPropagation();
     
     dispatch(currentScheduleSetItem(schedule));
-    dispatch(currentScheduleOpenDialog());
+    dispatch(currentScheduleOpenDialog(true));
   },
   //scheduleを読み込む
   fetchSchedule:month => {

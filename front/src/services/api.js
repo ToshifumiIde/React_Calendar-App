@@ -4,7 +4,7 @@ const header = {
   headers: {
     "Content-Type":"application/json"
   }
-}
+};
 
 export const get = async path => {
   const resp = await fetch(url(path));
@@ -14,9 +14,18 @@ export const get = async path => {
 };
 
 export const post = async (path, body) => {
-  const options ={...header, method:"POST" , body:JSON.stringify(body)};
+  const options = {...header, method:"POST" , body:JSON.stringify(body)};
   const resp = await fetch(url(path) , options);
   const result = await resp.json();
 
   return result;
+};
+
+export const deleteRequest = async path => {
+  const options = { method : "DELETE" };
+  await fetch(url(path), options);
+  //awaitで処理が完了するのを待つ
+
+  //204 No Contentが帰ってくるため、成功の場合は何もreturnしない
+  return;
 }
