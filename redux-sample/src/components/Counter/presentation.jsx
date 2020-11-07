@@ -1,5 +1,7 @@
+//containerからpropsを受け取る
+
 import React from "react";
-import { increment,decrement } from "../../redux/count/actions";
+
 
 const Counter = ({ count , increment , decrement }) => {
   return (
@@ -13,3 +15,4 @@ const Counter = ({ count , increment , decrement }) => {
 };
 
 export default Counter;
+//Counterという名称のcomponentとして出力
