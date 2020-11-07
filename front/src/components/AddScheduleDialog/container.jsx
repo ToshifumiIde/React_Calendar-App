@@ -4,7 +4,8 @@ import {
   addScheduleCloseDialog,
   addScheduleSetValue
 } from "../../redux/addSchedule/actions";
-import { schedulesAddItem } from "../../redux/schedules/actions";
+import { asyncSchedulesAddItem } from "../../redux/schedules/effects";
+// import { schedulesAddItem } from "../../redux/schedules/actions";
 
 
 //reduxでdialogの状態管理を切り替え(scheduleだけ受け取る)
@@ -12,7 +13,7 @@ const mapStateToProps = state =>({ schedule:state.addSchedule });
 
 
 //dialogを閉じるためのメソッド
-const mapDispatchToProps = dispatch =>({
+const mapDispatchToProps = dispatch => ({
   setSchedule:value =>{
     dispatch(addScheduleSetValue(value))
   },
@@ -20,7 +21,8 @@ const mapDispatchToProps = dispatch =>({
     dispatch(addScheduleCloseDialog());
   },
   saveSchedule:schedule => {
-    dispatch(schedulesAddItem(schedule));
+    dispatch(asyncSchedulesAddItem(schedule));
+    // dispatch(schedulesAddItem(schedule));
     dispatch(addScheduleCloseDialog());
   }
 });

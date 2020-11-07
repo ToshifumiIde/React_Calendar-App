@@ -10,35 +10,25 @@ const init ={
   items: [],
   isLoading:false
 };
-// const init ={
-//   items:[
-    // {
-    //   id:1,
-    //   title:"test",
-    //   date:dayjs(),
-    //   location:"会議室",
-    //   description:"経営戦略について",
-    // }
-//   ],
-//   isLoading:false
-// };
 
 const schedulesReducer = ( state = init , action ) => {
   const {type , payload } = action;
 
   switch(type){
-    case SCHEDULES_ADD_ITEM:
-      return {
-        ...state,
-        items:[
-          ...state.items,
-          {...payload, id:state.items.length +1 }
-        ],
-      };
     case SCHEDULES_SET_LOADING:
       return {
         ...state,
         isLoading: true,
+      };
+    case SCHEDULES_ADD_ITEM:
+      return {
+        ...state,
+        isLoading:false,
+        items:[
+          ...state.items,
+          payload,
+          // {...payload, id:state.items.length +1 }
+        ],
       };
     case SCHEDULES_FETCH_ITEM:
       return {
