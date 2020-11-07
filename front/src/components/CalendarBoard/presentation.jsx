@@ -12,7 +12,7 @@ const CalendarBoard = ({
   openCurrentScheduleDialog,
   fetchSchedule,
 }) => {
-  //useEffectはretuctの状態が更新されるたびに呼び出されるAPI
+  //useEffectはreactの状態が更新されるたびに呼び出されるAPI
   useEffect(() => {
     //「初回のみ」dateを取得する場合、第二引数の配列を空にする
     fetchSchedule();

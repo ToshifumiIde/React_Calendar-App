@@ -7,7 +7,7 @@ import {
 
 //初期値を設定
 const init ={
-  items:[],
+  items: [],
   isLoading:false
 };
 // const init ={
@@ -38,12 +38,12 @@ const schedulesReducer = ( state = init , action ) => {
     case SCHEDULES_SET_LOADING:
       return {
         ...state,
-        isLoading:true,
+        isLoading: true,
       };
     case SCHEDULES_FETCH_ITEM:
       return {
         ...state,
-        isLoading:false,
+        isLoading: false,
         items:payload,
       };
       default:
