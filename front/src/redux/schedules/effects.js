@@ -1,8 +1,10 @@
-import { 
-  schedulesSetLoading,
-  schedulesFetchItem,
+import {
   schedulesAddItem,
+  schedulesFetchItem,
   schedulesDeleteItem,
+  schedulesSetLoading,
+
+  schedulesAsyncFailure,
 } from "./actions";
 import { 
   get,
@@ -15,27 +17,40 @@ export const asyncSchedulesFetchItem = ({month , year}) => async dispatch => {
   //loading:trueにするactionをdispatchする
   dispatch(schedulesSetLoading());
 
-  //指定された月の予定を取得するAPIを叩く（月と年の指定は必須）
-  //awaitで受け取ることで非同期処理が終わるまで処理をブロックしている
-  //Promiseの中身だけをresultに格納している
-  const result = await get (`schedules?month=${month}&year=${year}`);
+  try {
+    const result = await get(`schedules`);
+    // const result = await get(`schedules?month=${month}&year=${year}`);//意図的にエラーを発生させるためにいったん非表示
 
-  //services/schedule.jsで作成したformatScheduleを呼び出し、各resultの中身rをmap関数を用いて引数に格納し、新しい配列として返す
-  const formatedSchedule = result.map (r => formatSchedule(r));
 
-  //reduxの状態として扱える様になったformatedScheduleをdispatchする
-  dispatch(schedulesFetchItem(formatedSchedule));
-};
+    const formatedSchedule = result.map(r => formatSchedule(r));
+    //指定された月の予定を取得するAPIを叩く（月と年の指定は必須）
+    //awaitで受け取ることで非同期処理が終わるまで処理をブロックしている
+    //Promiseの中身だけをresultに格納している
 
+    //services/schedule.jsで作成したformatScheduleを呼び出し、各resultの中身rをmap関数を用いて引数に格納し、新しい配列として返す    
+    //reduxの状態として扱える様になったformatedScheduleをdispatchする
+    dispatch(schedulesFetchItem(formatedSchedule));
+  } catch (err) {
+    console.error(err)
+    dispatch(schedulesAsyncFailure(err.message));
+  }
+  };
+  
 export const asyncSchedulesAddItem = schedule => async dispatch => {
   //loading:trueにするactionをdispatchする
   dispatch(schedulesSetLoading());
 
+  try{
   const body = {...schedule, date:schedule.date.toISOString() };
   const result = await post ("schedules" , body);
 
   const newSchedule = formatSchedule(result);
   dispatch(schedulesAddItem(newSchedule));
+  } catch (err) {
+    console.error(err);
+
+    dispatch(schedulesAsyncFailure(err.message));
+  }
 };
 
 export const asyncSchedulesDeleteItem = id => async (dispatch , getState) => {
@@ -47,6 +62,7 @@ export const asyncSchedulesDeleteItem = id => async (dispatch , getState) => {
   //削除したscheduleを配列から削除して新しいstateをdispatchする要件があるため、
   //上記で実装。
 
+  try{
   await deleteRequest(`schedules/${id}`);
   //deleteRequest()で削除を実行
   //pathはschedules/:idだったため、テンプレート文字列でpathを動的に作成
@@ -55,4 +71,8 @@ export const asyncSchedulesDeleteItem = id => async (dispatch , getState) => {
   const newSchedules = currentSchedules.filter(s => s.id !== id);
   dispatch(schedulesDeleteItem(newSchedules));
   //削除データをフロントからも消すため、filter()を用いてidが一致するものだけを排除している。
+  } catch (err) {
+    console.error(err);
+    dispatch(schedulesAsyncFailure(err.message));
+  }
 };

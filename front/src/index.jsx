@@ -28,7 +28,7 @@ import CurrentScheduleDialog from "./components/CurrentScheduleDialog/container"
 //redux-thunkが普通のactionかthunkのactionなのか判断可能となる
 const store = createStore( rootReducer , applyMiddleware(thunk) );
 
-//バリデーションの追加が完了
+//エラーハンドリングの実装（途中）
 
 const App = () => {
   return(
