@@ -10,13 +10,12 @@ export const schedulesAddItem = payload => ({
   type:SCHEDULES_ADD_ITEM,
   payload
 });
-//ロード後に取得したデータをセットする
+//ロード後に取得したデータを読み込む
 export const schedulesFetchItem = payload => ({
   type:SCHEDULES_FETCH_ITEM,
   payload
 });
 //リクエスト送信前にローディング状態にする
 export const schedulesSetLoading = () => ({
-  type:SCHEDULES_SET_LOADING,
-  payload
+  type:SCHEDULES_SET_LOADING
 });

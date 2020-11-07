@@ -1,4 +1,4 @@
-import { schedulesSetLoading } from "./actions";
+import { schedulesSetLoading , schedulesFetchItem } from "./actions";
 import { get } from "../../services/api";
 import { formatSchedule } from "../../services/schedule";
 
@@ -11,7 +11,7 @@ export const asyncSchedulesFetchItem = ({month , year}) =>async dispatch => {
   //Promiseの中身だけをresultに格納している
   const result = await get (`schedules?month=${month}&year=${year}`);
 
-  //services/schedule.jsで作成したformatScheduleを呼び出し、各resultの中身rをmap関数を用いて引数に格納する
+  //services/schedule.jsで作成したformatScheduleを呼び出し、各resultの中身rをmap関数を用いて引数に格納し、新しい配列として返す
   const formatedSchedule = result.map (r => formatSchedule(r));
 
   //reduxの状態として扱える様になったformatedScheduleをdispatchする
