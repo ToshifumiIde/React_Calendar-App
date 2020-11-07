@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch =>({
     dispatch(calendarSetMonth(month));
   },
 
-  fetchItem:month =>{
+  fetchItem: month =>{
     dispatch(asyncSchedulesFetchItem(month));
   }
 });
@@ -19,7 +19,6 @@ const mapDispatchToProps = dispatch =>({
 const mergeProps = (stateProps , dispatchProps) =>({
   //reduxのstate→dayjs
   month:getMonth(stateProps.calendar),
-
   setNextMonth:() => {
     const nextMonth = getNextMonth(stateProps.calendar);
     dispatchProps.setMonth(nextMonth);

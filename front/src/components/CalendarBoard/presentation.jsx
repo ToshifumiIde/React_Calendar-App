@@ -1,4 +1,4 @@
-import React ,{ useEffect } from "react";
+import React , { useEffect } from "react";
 import { GridList ,Typography } from '@material-ui/core';
 import CalendarElement from "../CalendarElement";
 import * as styles from "./style.css";

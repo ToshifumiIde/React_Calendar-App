@@ -1,8 +1,9 @@
 //constants
 export const SCHEDULES_ADD_ITEM = "SCHEDULES_ADD_ITEM";
-
 export const SCHEDULES_FETCH_ITEM = "SCHEDULES_FETCH_ITEM";
 export const SCHEDULES_SET_LOADING = "SCHEDULES_SET_LOADING";
+export const SCHEDULES_DELETE_ITEM = "SCHEDULES_DELETE_ITEM";
+
 
 //actions
 //Item追加
@@ -19,4 +20,9 @@ export const schedulesFetchItem = payload => ({
 //リクエスト送信前にローディング状態にする
 export const schedulesSetLoading = () => ({
   type:SCHEDULES_SET_LOADING
+});
+
+export const schedulesDeleteItem = payload =>({
+  type:SCHEDULES_DELETE_ITEM,
+  payload
 });

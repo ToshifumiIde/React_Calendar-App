@@ -5,7 +5,7 @@ import {
   addScheduleSetValue
 } from "../../redux/addSchedule/actions";
 import { asyncSchedulesAddItem } from "../../redux/schedules/effects";
-// import { schedulesAddItem } from "../../redux/schedules/actions";
+import { schedulesAddItem } from "../../redux/schedules/actions";
 
 
 //reduxでdialogの状態管理を切り替え(scheduleだけ受け取る)
@@ -17,8 +17,8 @@ const mapDispatchToProps = dispatch => ({
   setSchedule:value =>{
     dispatch(addScheduleSetValue(value))
   },
-  closeDialog:()=> {
-    dispatch(addScheduleCloseDialog());
+  closeDialog: () => {
+    dispatch(addScheduleCloseDialog(false));
   },
   saveSchedule:schedule => {
     dispatch(asyncSchedulesAddItem(schedule));

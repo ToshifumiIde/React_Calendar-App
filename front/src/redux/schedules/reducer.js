@@ -1,8 +1,11 @@
 import dayjs from "dayjs";
 import {
   SCHEDULES_ADD_ITEM,
+  SCHEDULES_ADD_ITEM_SUCCESS,
   SCHEDULES_FETCH_ITEM,
+  SCHEDULES_FETCH_ITEM_SUCCESS,
   SCHEDULES_SET_LOADING,
+  SCHEDULES_DELETE_ITEM,
 } from "./actions";
 
 //初期値を設定
@@ -12,7 +15,11 @@ const init ={
 };
 
 const schedulesReducer = ( state = init , action ) => {
-  const {type , payload } = action;
+  const {
+    type,
+    payload,
+    error
+  } = action;
 
   switch(type){
     case SCHEDULES_SET_LOADING:
@@ -27,7 +34,6 @@ const schedulesReducer = ( state = init , action ) => {
         items:[
           ...state.items,
           payload,
-          // {...payload, id:state.items.length +1 }
         ],
       };
     case SCHEDULES_FETCH_ITEM:
@@ -36,6 +42,12 @@ const schedulesReducer = ( state = init , action ) => {
         isLoading: false,
         items:payload,
       };
+    case SCHEDULES_DELETE_ITEM:
+      return {
+        ...state,
+        isLoading: false,
+        items:payload,
+      }
       default:
         return state;
   }
