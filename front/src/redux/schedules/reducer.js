@@ -22,7 +22,7 @@ const schedulesReducer = ( state = init , action ) => {
     error
   } = action;
 
-  switch(type){
+  switch(type) {
     case SCHEDULES_SET_LOADING:
       return {
         ...state,
@@ -57,7 +57,7 @@ const schedulesReducer = ( state = init , action ) => {
       };
       
     case SCHEDULES_RESET_ERROR:
-      return{
+      return {
         ...state,
         error:null
       };

@@ -21,7 +21,7 @@ import ErrorSnackbar from "./components/ErrorSnackbar/container";
 //redux-thunkが普通のactionかthunkのactionなのか判断可能となる
 const store = createStore( rootReducer , applyMiddleware(thunk) );
 
-//hoverでボタンの説明表示（途中）
+//hoverでボタンの説明表示（完了）
 
 const App = () => {
   return(

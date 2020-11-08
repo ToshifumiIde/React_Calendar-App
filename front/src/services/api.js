@@ -18,6 +18,7 @@ export const get = async path => {
 export const post = async (path, body) => {
   const options = {...header, method:"POST" , body:JSON.stringify(body)};
   const resp = await fetch(url(path) , options);
+  
   checkError(resp.status);
 
   const result = await resp.json();
@@ -30,7 +31,7 @@ export const deleteRequest = async path => {
   const resp = await fetch(url(path), options);
   //awaitで処理が完了するのを待つ
   //204 No Contentが帰ってくるため、成功の場合は何もreturnしない
-  checkoutError(resp.status);
+  checkError(resp.status);
   return;
 };
 

@@ -6,8 +6,8 @@ import {
   schedulesAsyncFailure,
 } from "./actions";
 import { 
-  get,
   post,
+  get,
   deleteRequest,
 } from "../../services/api";
 import { formatSchedule } from "../../services/schedule";
@@ -29,7 +29,7 @@ export const asyncSchedulesFetchItem = ({month , year}) => async dispatch => {
     //reduxの状態として扱える様になったformatedScheduleをdispatchする
     dispatch(schedulesFetchItem(formatedSchedule));
   } catch (err) {
-    // console.error(err)
+    console.error(err)
     dispatch(schedulesAsyncFailure(err.message));
   }
   };
@@ -46,29 +46,25 @@ export const asyncSchedulesAddItem = schedule => async dispatch => {
   dispatch(schedulesAddItem(newSchedule));
   } catch (err) {
     console.error(err);
-
     dispatch(schedulesAsyncFailure(err.message));
   }
 };
 
 export const asyncSchedulesDeleteItem = id => async (dispatch , getState) => {
-  //loading:trueにするactionをdispatchする
-  dispatch(schedulesSetLoading());
-
+  dispatch(schedulesSetLoading());  //loading:trueにするactionをdispatch
   const currentSchedules = getState().schedules.items;
   //getState:thunkの第二引数でstoreのデータを取得することが可能
   //削除したscheduleを配列から削除して新しいstateをdispatchする要件があるため、
   //上記で実装。
 
   try {
-  await deleteRequest(`schedules/${id}`);
-  //deleteRequest()で削除を実行
-  //pathはschedules/:idだったため、テンプレート文字列でpathを動的に作成
-
-  //成功したらローカルのstateを削除
-  const newSchedules = currentSchedules.filter(s => s.id !== id);
-  dispatch(schedulesDeleteItem(newSchedules));
-  //削除データをフロントからも消すため、filter()を用いてidが一致するものだけを排除している。
+    await deleteRequest(`schedules/${id}`);
+    //deleteRequest()で削除を実行
+    //pathはschedules/:idだったため、テンプレート文字列でpathを動的に作成
+    //成功したらローカルのstateを削除
+    const newSchedules = currentSchedules.filter(s => s.id !== id);
+    dispatch(schedulesDeleteItem(newSchedules));
+    //削除データをフロントからも消すため、filter()を用いてidが一致するものだけ排除。
   } catch (err) {
     console.error(err);
     dispatch(schedulesAsyncFailure(err.message));
