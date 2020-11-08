@@ -47,7 +47,7 @@ const schedulesReducer = ( state = init , action ) => {
       return {
         ...state,
         isLoading: false,
-        items:payload,
+        items: payload,
       };
 
     case SCHEDULES_ASYNC_FAILURE:

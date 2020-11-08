@@ -1,8 +1,8 @@
 import {
+  schedulesSetLoading,
   schedulesAddItem,
   schedulesFetchItem,
   schedulesDeleteItem,
-  schedulesSetLoading,
   schedulesAsyncFailure,
 } from "./actions";
 import { 
@@ -17,8 +17,8 @@ export const asyncSchedulesFetchItem = ({month , year}) => async dispatch => {
   dispatch(schedulesSetLoading());
 
   try {
-    const result = await get(`schedules`);
-    // const result = await get(`schedules?month=${month}&year=${year}`);
+    // const result = await get(`schedules`);
+    const result = await get(`schedules?month=${month}&year=${year}`);
     //意図的にエラーを発生させるためにいったん非表示
     const formatedSchedule = result.map(r => formatSchedule(r));
     //指定された月の予定を取得するAPIを叩く（月と年の指定は必須）
@@ -60,7 +60,7 @@ export const asyncSchedulesDeleteItem = id => async (dispatch , getState) => {
   //削除したscheduleを配列から削除して新しいstateをdispatchする要件があるため、
   //上記で実装。
 
-  try{
+  try {
   await deleteRequest(`schedules/${id}`);
   //deleteRequest()で削除を実行
   //pathはschedules/:idだったため、テンプレート文字列でpathを動的に作成

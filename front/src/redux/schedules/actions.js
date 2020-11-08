@@ -25,7 +25,7 @@ export const schedulesSetLoading = () => ({
 });
 
 //スケジュールを削除する
-export const schedulesDeleteItem = payload =>({
+export const schedulesDeleteItem = payload => ({
   type:SCHEDULES_DELETE_ITEM,
   payload
 });
