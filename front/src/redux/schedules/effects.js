@@ -29,8 +29,8 @@ export const asyncSchedulesFetchItem = ({month , year}) => async dispatch => {
     //reduxの状態として扱える様になったformatedScheduleをdispatchする
     dispatch(schedulesFetchItem(formatedSchedule));
   } catch (err) {
-    console.error(err)
-    // dispatch(schedulesAsyncFailure(err.message));
+    // console.error(err)
+    dispatch(schedulesAsyncFailure(err.message));
   }
   };
   
