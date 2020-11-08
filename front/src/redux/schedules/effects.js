@@ -3,7 +3,6 @@ import {
   schedulesFetchItem,
   schedulesDeleteItem,
   schedulesSetLoading,
-
   schedulesAsyncFailure,
 } from "./actions";
 import { 
@@ -19,9 +18,8 @@ export const asyncSchedulesFetchItem = ({month , year}) => async dispatch => {
 
   try {
     const result = await get(`schedules`);
-    // const result = await get(`schedules?month=${month}&year=${year}`);//意図的にエラーを発生させるためにいったん非表示
-
-
+    // const result = await get(`schedules?month=${month}&year=${year}`);
+    //意図的にエラーを発生させるためにいったん非表示
     const formatedSchedule = result.map(r => formatSchedule(r));
     //指定された月の予定を取得するAPIを叩く（月と年の指定は必須）
     //awaitで受け取ることで非同期処理が終わるまで処理をブロックしている
@@ -31,7 +29,7 @@ export const asyncSchedulesFetchItem = ({month , year}) => async dispatch => {
     //reduxの状態として扱える様になったformatedScheduleをdispatchする
     dispatch(schedulesFetchItem(formatedSchedule));
   } catch (err) {
-    console.error(err)
+    // console.error(err)
     dispatch(schedulesAsyncFailure(err.message));
   }
   };
