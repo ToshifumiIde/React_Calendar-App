@@ -13,4 +13,7 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(ErrorSnackbar);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ErrorSnackbar);

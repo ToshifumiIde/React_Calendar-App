@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ErrorSnackbar = ({ error , handleClose }) =>{
+const ErrorSnackbar = ({ error , handleClose }) => {
   const classes = useStyles();
 
   return (

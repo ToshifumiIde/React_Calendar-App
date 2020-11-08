@@ -13,6 +13,7 @@ export const schedulesAddItem = payload => ({
   type:SCHEDULES_ADD_ITEM,
   payload
 });
+
 //ロード後に取得したデータを読み込む
 export const schedulesFetchItem = payload => ({
   type:SCHEDULES_FETCH_ITEM,
@@ -25,7 +26,7 @@ export const schedulesSetLoading = () => ({
 });
 
 //スケジュールを削除する
-export const schedulesDeleteItem = payload =>({
+export const schedulesDeleteItem = payload => ({
   type:SCHEDULES_DELETE_ITEM,
   payload
 });
@@ -36,7 +37,7 @@ export const schedulesAsyncFailure = error =>({
   error
 });
 
-
+//エラー表示完了後、エラー状態をリセットするaction
 export const schedulesResetError = () =>({
   type:SCHEDULES_RESET_ERROR,
 });

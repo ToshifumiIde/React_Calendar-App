@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import AddScheduleDialog from "./presentation";
 import { currentScheduleCloseDialog } from "../../redux/currentSchedule/actions";
-import { asyncSchedulesDeleteItem } from "../../redux/schedules/effects"
+import { asyncSchedulesDeleteItem } from "../../redux/schedules/effects";
 
 const mapStateToProps = state => ({
   schedule:state.currentSchedule
