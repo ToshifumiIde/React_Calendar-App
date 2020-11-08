@@ -2,11 +2,10 @@ import { connect } from "react-redux";
 import AddScheduleDialog from "./presentation";
 import { 
   addScheduleCloseDialog,
-  addScheduleSetValue
+  addScheduleSetValue,
+  addScheduleStartEdit,
 } from "../../redux/addSchedule/actions";
 import { asyncSchedulesAddItem } from "../../redux/schedules/effects";
-import { schedulesAddItem } from "../../redux/schedules/actions";
-
 
 //reduxでdialogの状態管理を切り替え(scheduleだけ受け取る)
 const mapStateToProps = state =>({ schedule:state.addSchedule });
@@ -22,8 +21,11 @@ const mapDispatchToProps = dispatch => ({
   },
   saveSchedule:schedule => {
     dispatch(asyncSchedulesAddItem(schedule));
-    // dispatch(schedulesAddItem(schedule));
     dispatch(addScheduleCloseDialog());
+  },
+
+  setIsEditStart:()=>{
+    dispatch(addScheduleStartEdit());
   }
 });
 
