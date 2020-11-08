@@ -21,7 +21,8 @@ import ErrorSnackbar from "./components/ErrorSnackbar/container";
 //redux-thunkが普通のactionかthunkのactionなのか判断可能となる
 const store = createStore( rootReducer , applyMiddleware(thunk) );
 
-//hoverでボタンの説明表示（完了）
+//dialogを閉じるときに入力途中の場合、confirmを表示させる
+//Calendarアプリの完成
 
 const App = () => {
   return(
