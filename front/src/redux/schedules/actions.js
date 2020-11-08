@@ -3,9 +3,8 @@ export const SCHEDULES_ADD_ITEM = "SCHEDULES_ADD_ITEM";
 export const SCHEDULES_FETCH_ITEM = "SCHEDULES_FETCH_ITEM";
 export const SCHEDULES_SET_LOADING = "SCHEDULES_SET_LOADING";
 export const SCHEDULES_DELETE_ITEM = "SCHEDULES_DELETE_ITEM";
-
-export const SCHEDULE_ASYNC_FAILURE = "SCHEDULE_ASYNC_FAILURE";
-export const SCHEDULE_RESET_ERROR = "SCHEDULE_RESET_ERROR";
+export const SCHEDULES_ASYNC_FAILURE = "SCHEDULES_ASYNC_FAILURE";
+export const SCHEDULES_RESET_ERROR = "SCHEDULES_RESET_ERROR";
 
 
 //actions
@@ -37,6 +36,7 @@ export const schedulesAsyncFailure = error =>({
   error
 });
 
+
 export const schedulesResetError = () =>({
-  type:SCHEDULE_RESET_ERROR,
+  type:SCHEDULES_RESET_ERROR,
 });
